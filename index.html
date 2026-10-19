@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShineVision - Vị trí tuyển dụng</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#e1f3e7',
+                            200: '#c3e7cf',
+                            500: '#0f766e',
+                            600: '#0d5c3a',
+                            700: '#0a4d30',
+                            800: '#063a24',
+                            dark: '#082f1d'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-[#f7faf8] text-gray-800 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- Header / Navigation Bar -->
+    <header class="bg-white sticky top-0 z-50 border-b border-gray-100 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                
+                <!-- Logo -->
+                <a href="https://tuyendung.shinevisioncenter.com" class="flex items-center gap-2.5">
+                    <img src="assets/logoshine.png" alt="ShineVision Logo" class="h-10 w-auto object-contain" onerror="this.onerror=null; this.src='https://placehold.co/180x50/0d5c3a/ffffff?text=ShineVision';">
+                </a>
+
+                <!-- Navigation Links -->
+                <nav class="hidden md:flex space-x-10 text-base font-medium text-gray-700">
+                    <a href="https://shinevisioncenter.com" target="_blank" class="hover:text-brand-600 transition-colors">Về chúng tôi</a>
+                    <a href="#jobs" class="hover:text-brand-600 transition-colors">Vị trí tuyển dụng</a>
+                    <a href="#culture" class="hover:text-brand-600 transition-colors">Văn hóa</a>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="hidden md:flex items-center">
+                    <a href="#jobs" class="bg-brand-600 hover:bg-brand-700 text-white font-medium px-6 py-2.5 rounded-xl shadow-sm transition-all duration-200">
+                        Ứng tuyển ngay
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-gray-900 focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 px-4 pt-2 pb-4 space-y-3">
+            <a href="https://shinevisioncenter.com" target="_blank" class="block py-2 text-gray-700 font-medium hover:text-brand-600">Về chúng tôi</a>
+            <a href="#jobs" class="block py-2 text-gray-700 font-medium hover:text-brand-600">Vị trí tuyển dụng</a>
+            <a href="#culture" class="block py-2 text-gray-700 font-medium hover:text-brand-600">Văn hóa</a>
+            <a href="#jobs" class="block text-center bg-brand-600 text-white font-medium py-2.5 rounded-xl mt-2">Ứng tuyển ngay</a>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow">
+        
+        <!-- 1. Hero Banner: Full Width -->
+        <section class="w-full">
+            <img src="assets/banner.png" 
+                 alt="ShineVision Recruitment Hero Banner" 
+                 class="w-full h-auto object-cover block"
+                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80';">
+        </section>
+
+        <!-- 2. Search & Filter Bar Container -->
+        <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 sm:-mt-8 relative z-10 mb-10">
+            <div class="bg-white p-4 sm:p-5 rounded-2xl shadow-md border border-gray-100 grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+                
+                <!-- Search Box -->
+                <div class="md:col-span-6 relative">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <input type="text" id="search-input" 
+                        class="block w-full pl-11 pr-4 py-3 bg-white border border-gray-200 rounded-xl text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent text-sm transition-all" 
+                        placeholder="Tìm kiếm công việc...">
+                </div>
+
+                <!-- Bộ Phận Dropdown -->
+                <div class="md:col-span-3 relative">
+                    <select id="department-select" class="block w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent text-sm appearance-none cursor-pointer pr-10">
+                        <option value="all">Bộ phận (Tất cả)</option>
+                        <option value="Chuyên môn">Chuyên môn</option>
+                        <option value="Kinh doanh">Kinh doanh</option>
+                        <option value="Marketing">Marketing</option>
+                    </select>
+                    <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none text-gray-400">
+                        <i class="fa-solid fa-chevron-down text-xs"></i>
+                    </div>
+                </div>
+
+                <!-- Hình Thức Dropdown -->
+                <div class="md:col-span-3 relative">
+                    <select id="type-select" class="block w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent text-sm appearance-none cursor-pointer pr-10">
+                        <option value="all">Hình thức (Tất cả)</option>
+                        <option value="Toàn thời gian">Toàn thời gian</option>
+                        <option value="Bán thời gian">Bán thời gian</option>
+                    </select>
+                    <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none text-gray-400">
+                        <i class="fa-solid fa-chevron-down text-xs"></i>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 3. Job List Section -->
+        <section id="jobs" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 mb-12">
+            
+            <!-- Section Title -->
+            <div class="mb-8">
+                <h2 class="text-3xl font-extrabold text-brand-dark mb-2">Các vị trí đang tuyển</h2>
+                <p class="text-gray-600">Gia nhập ShineVision để cùng tạo ra những giá trị tốt đẹp hơn cho cộng đồng.</p>
+            </div>
+
+            <!-- Job Cards Container -->
+            <div id="job-list-container" class="space-y-4">
+                
+                <!-- Card 1: Huấn luyện viên thị giác -->
+                <div class="job-card bg-white rounded-2xl p-5 sm:p-6 border border-gray-100 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col md:flex-row md:items-center justify-between gap-6"
+                     data-title="Huấn luyện viên thị giác" data-dept="Chuyên môn" data-type="Toàn thời gian">
+                    <div class="flex items-start sm:items-center gap-4">
+                        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-brand-100 flex-shrink-0 flex items-center justify-center text-brand-600">
+                            <i class="fa-regular fa-eye text-2xl"></i>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex flex-wrap items-center gap-3">
+                                <h3 class="text-xl font-bold text-gray-900">Huấn luyện viên thị giác</h3>
+                                <span class="bg-emerald-100 text-emerald-800 text-xs font-semibold px-3 py-1 rounded-full">
+                                    Đang tuyển
+                                </span>
+                            </div>
+                            <div class="flex flex-wrap items-center gap-y-2 gap-x-6 text-sm text-gray-600">
+                                <div class="flex items-center gap-1.5">
+                                    <i class="fa-solid fa-briefcase text-gray-400"></i>
+                                    <span>Chuyên môn</span>
+                                </div>
+                                <div class="flex items-center gap-1.5">
+                                    <i class="fa-solid fa-wifi text-gray-400"></i>
+                                    <span>Online</span>
+                                </div>
+                                <div class="flex items-center gap-1.5">
+                                    <i class="fa-regular fa-clock text-gray-400"></i>
+                                    <span>Toàn thời gian</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-1.5 text-brand-600 font-bold text-base pt-1">
+                                <i class="fa-solid fa-money-bill-wave"></i>
+                                <span>8 - 15 triệu/tháng</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0 self-end md:self-center w-full md:w-auto">
+                        <a href="jd/20261019-eye-coach/index.html" class="w-full md:w-auto border border-brand-600 text-brand-600 hover:bg-brand-600 hover:text-white font-medium px-5 py-2.5 rounded-xl transition-all duration-200 flex items-center justify-center gap-2">
+                            Xem chi tiết
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 2: Chuyên viên phát triển đối tác -->
+                <div class="job-card bg-white rounded-2xl p-5 sm:p-6 border border-gray-100 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col md:flex-row md:items-center justify-between gap-6"
+                     data-title="Chuyên viên phát triển đối tác" data-dept="Kinh doanh" data-type="Toàn thời gian">
+                    <div class="flex items-start sm:items-center gap-4">
+                        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-brand-100 flex-shrink-0 flex items-center justify-center text-brand-600">
+                            <i class="fa-solid fa-user-group text-xl"></i>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex flex-wrap items-center gap-3">
+                                <h3 class="text-xl font-bold text-gray-900">Chuyên viên phát triển đối tác</h3>
+                                <span class="bg-emerald-100 text-emerald-800 text-xs font-semibold px-3 py-1 rounded-full">
+                                    Đang tuyển
+                                </span>
+                            </div>
+                            <div class="flex flex-wrap items-center gap-y-2 gap-x-6 text-sm text-gray-600">
+                                <div class="flex items-center gap-1.5">
+                                    <i class="fa-solid fa-briefcase text-gray-400"></i>
+                                    <span>Kinh doanh</span>
+                                </div>
+                                <div class="flex items-center gap-1.5">
+                                    <i class="fa-solid fa-location-dot text-gray-400"></i>
+                                    <span>Hà Nội</span>
+                                </div>
+                                <div class="flex items-center gap-1.5">
+                                    <i class="fa-regular fa-clock text-gray-400"></i>
+                                    <span>Toàn thời gian</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-1.5 text-brand-600 font-bold text-base pt-1">
+                                <i class="fa-solid fa-money-bill-wave"></i>
+                                <span>Thu nhập theo năng lực</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0 self-end md:self-center w-full md:w-auto">
+                        <a href="jd/20261019-marketer/index.html" class="w-full md:w-auto border border-brand-600 text-brand-600 hover:bg-brand-600 hover:text-white font-medium px-5 py-2.5 rounded-xl transition-all duration-200 flex items-center justify-center gap-2">
+                            Xem chi tiết
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 3: Content Creator (Nhân viên Content Marketing) -->
+                <div class="job-card bg-white rounded-2xl p-5 sm:p-6 border border-gray-100 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col md:flex-row md:items-center justify-between gap-6"
+                     data-title="Content Creator" data-dept="Marketing" data-type="Bán thời gian">
+                    <div class="flex items-start sm:items-center gap-4">
+                        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-brand-100 flex-shrink-0 flex items-center justify-center text-brand-600">
+                            <i class="fa-solid fa-bullhorn text-xl"></i>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex flex-wrap items-center gap-3">
+                                <h3 class="text-xl font-bold text-gray-900">Content Creator</h3>
+                                <span class="bg-emerald-100 text-emerald-800 text-xs font-semibold px-3 py-1 rounded-full">
+                                    Đang tuyển
+                                </span>
+                            </div>
+                            <div class="flex flex-wrap items-center gap-y-2 gap-x-6 text-sm text-gray-600">
+                                <div class="flex items-center gap-1.5">
+                                    <i class="fa-solid fa-briefcase text-gray-400"></i>
+                                    <span>Marketing</span>
+                                </div>
+                                <div class="flex items-center gap-1.5">
+                                    <i class="fa-solid fa-arrows-spin text-gray-400"></i>
+                                    <span>Linh hoạt</span>
+                                </div>
+                                <div class="flex items-center gap-1.5">
+                                    <i class="fa-regular fa-clock text-gray-400"></i>
+                                    <span>Bán thời gian</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-1.5 text-brand-600 font-bold text-base pt-1">
+                                <i class="fa-solid fa-money-bill-wave"></i>
+                                <span>Thu nhập theo năng lực</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0 self-end md:self-center w-full md:w-auto">
+                        <a href="jd/20261019-content-creator/index.html" class="w-full md:w-auto border border-brand-600 text-brand-600 hover:bg-brand-600 hover:text-white font-medium px-5 py-2.5 rounded-xl transition-all duration-200 flex items-center justify-center gap-2">
+                            Xem chi tiết
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Empty Search Result -->
+                <div id="no-results" class="hidden text-center py-12 bg-white rounded-2xl border border-dashed border-gray-200">
+                    <i class="fa-solid fa-magnifying-glass text-4xl text-gray-300 mb-3"></i>
+                    <p class="text-gray-500 font-medium">Không tìm thấy vị trí tuyển dụng phù hợp.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 4. Culture & Values Cards -->
+        <section id="culture" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 mb-16">
+            <div class="bg-brand-100/80 rounded-3xl p-6 sm:p-8 lg:p-10 border border-brand-200">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Value 1 -->
+                    <div class="flex items-start gap-4">
+                        <div class="w-14 h-14 rounded-full bg-brand-200 flex-shrink-0 flex items-center justify-center text-brand-700">
+                            <i class="fa-solid fa-heart text-2xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-brand-dark mb-1">Công việc ý nghĩa</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                Đóng góp vào sức khỏe thị giác và chất lượng cuộc sống cộng đồng.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Value 2 -->
+                    <div class="flex items-start gap-4">
+                        <div class="w-14 h-14 rounded-full bg-brand-200 flex-shrink-0 flex items-center justify-center text-brand-700">
+                            <i class="fa-solid fa-chart-line text-2xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-brand-dark mb-1">Phát triển chuyên môn</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                Được đào tạo bài bản và cơ hội thăng tiến rõ ràng.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Value 3 -->
+                    <div class="flex items-start gap-4">
+                        <div class="w-14 h-14 rounded-full bg-brand-200 flex-shrink-0 flex items-center justify-center text-brand-700">
+                            <i class="fa-solid fa-users text-2xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-brand-dark mb-1">Đội ngũ đồng hành</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                Môi trường thân thiện, cởi mở và luôn sẵn sàng hỗ trợ.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 5. Footer -->
+    <footer id="about" class="bg-white border-t border-gray-100 pt-12 pb-6">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 pb-8 border-b border-gray-100">
+                
+                <!-- Logo & Tagline -->
+                <div class="space-y-2">
+                    <a href="https://tuyendung.shinevisioncenter.com" class="flex items-center gap-2">
+                        <img src="assets/logoshine.png" alt="ShineVision Logo" class="h-8 w-auto object-contain" onerror="this.onerror=null; this.src='https://placehold.co/150x40/0d5c3a/ffffff?text=ShineVision';">
+                    </a>
+                    <p class="text-xs text-gray-500 italic">
+                        Với mắt sáng, vì những hành trình trọn vẹn hơn.
+                    </p>
+                </div>
+
+                <!-- Nav Links -->
+                <nav class="flex flex-wrap gap-6 sm:gap-8 text-sm text-gray-600 font-medium">
+                    <a href="https://shinevisioncenter.com" target="_blank" class="hover:text-brand-600 transition-colors">Về chúng tôi</a>
+                    <a href="#jobs" class="hover:text-brand-600 transition-colors">Vị trí tuyển dụng</a>
+                    <a href="#culture" class="hover:text-brand-600 transition-colors">Văn hóa</a>
+                    <a href="#" class="hover:text-brand-600 transition-colors">Liên hệ</a>
+                </nav>
+
+                <!-- Social Icons -->
+                <div class="flex items-center gap-3 text-gray-700">
+                    <a href="https://www.facebook.com/makeyoureyesShine" target="_blank" class="w-9 h-9 rounded-full bg-gray-50 hover:bg-brand-100 hover:text-brand-600 flex items-center justify-center transition-all" title="Facebook">
+                        <i class="fa-brands fa-facebook-f text-sm"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@Kh%C3%B4iph%E1%BB%A5cth%E1%BB%8Bl%E1%BB%B1cShine" target="_blank" class="w-9 h-9 rounded-full bg-gray-50 hover:bg-brand-100 hover:text-brand-600 flex items-center justify-center transition-all" title="YouTube">
+                        <i class="fa-brands fa-youtube text-sm"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@khoiphucthilucshine" target="_blank" class="w-9 h-9 rounded-full bg-gray-50 hover:bg-brand-100 hover:text-brand-600 flex items-center justify-center transition-all" title="TikTok">
+                        <i class="fa-brands fa-tiktok text-sm"></i>
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Bottom Copyright Line -->
+            <div class="pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-500 gap-4">
+                <p>© 2024 ShineVision. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:underline">Chính sách bảo mật</a>
+                    <a href="#" class="hover:underline">Điều khoản sử dụng</a>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Logic Script -->
+    <script>
+        const searchInput = document.getElementById('search-input');
+        const departmentSelect = document.getElementById('department-select');
+        const typeSelect = document.getElementById('type-select');
+        const jobCards = document.querySelectorAll('.job-card');
+        const noResults = document.getElementById('no-results');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        function filterJobs() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            const selectedDept = departmentSelect.value;
+            const selectedType = typeSelect.value;
+
+            let visibleCount = 0;
+
+            jobCards.forEach(card => {
+                const title = card.getAttribute('data-title').toLowerCase();
+                const dept = card.getAttribute('data-dept');
+                const type = card.getAttribute('data-type');
+
+                const matchesSearch = title.includes(searchTerm);
+                const matchesDept = (selectedDept === 'all' || dept === selectedDept);
+                const matchesType = (selectedType === 'all' || type === selectedType);
+
+                if (matchesSearch && matchesDept && matchesType) {
+                    card.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            if (visibleCount === 0) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+            }
+        }
+
+        searchInput.addEventListener('input', filterJobs);
+        departmentSelect.addEventListener('change', filterJobs);
+        typeSelect.addEventListener('change', filterJobs);
+    </script>
+</body>
+</html>
