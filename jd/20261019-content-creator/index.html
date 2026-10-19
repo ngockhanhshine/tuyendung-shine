@@ -41,47 +41,9 @@
 </head>
 <body class="bg-[#f7faf8] text-gray-800 font-sans antialiased min-h-screen flex flex-col justify-between">
 
-    <!-- Header / Navigation Bar -->
-    <header class="bg-white sticky top-0 z-50 border-b border-gray-100 shadow-sm">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                
-                <!-- Logo -->
-                <a href="https://tuyendung.shinevisioncenter.com" class="flex items-center gap-2.5">
-                    <img src="../../assets/logoshine.png" alt="ShineVision Logo" class="h-10 w-auto object-contain" onerror="this.onerror=null; this.src='https://placehold.co/180x50/0d5c3a/ffffff?text=ShineVision';">
-                </a>
+    <!-- NƠI CHỨA HEADER GỌI TỪ SCRIPT CHUNG -->
+    <div id="shared-header-container"></div>
 
-                <!-- Navigation Links -->
-                <nav class="hidden md:flex space-x-10 text-base font-medium text-gray-700">
-                    <a href="https://shinevisioncenter.com" target="_blank" class="hover:text-brand-600 transition-colors">Về chúng tôi</a>
-                    <a href="index.html#jobs" class="hover:text-brand-600 transition-colors">Vị trí tuyển dụng</a>
-                    <a href="index.html#culture" class="hover:text-brand-600 transition-colors">Văn hóa</a>
-                </nav>
-
-                <!-- CTA Button -->
-                <div class="hidden md:flex items-center">
-                    <a href="#apply-info" class="bg-brand-600 hover:bg-brand-700 text-white font-medium px-6 py-2.5 rounded-xl shadow-sm transition-all duration-200">
-                        Ứng tuyển ngay
-                    </a>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-gray-900 focus:outline-none p-2">
-                        <i class="fa-solid fa-bars text-2xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mobile Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 px-4 pt-2 pb-4 space-y-3">
-            <a href="https://shinevisioncenter.com" target="_blank" class="block py-2 text-gray-700 font-medium hover:text-brand-600">Về chúng tôi</a>
-            <a href="index.html#jobs" class="block py-2 text-gray-700 font-medium hover:text-brand-600">Vị trí tuyển dụng</a>
-            <a href="index.html#culture" class="block py-2 text-gray-700 font-medium hover:text-brand-600">Văn hóa</a>
-            <a href="#apply-info" class="block text-center bg-brand-600 text-white font-medium py-2.5 rounded-xl mt-2">Ứng tuyển ngay</a>
-        </div>
-    </header>
 
     <!-- Main Content Area -->
     <main class="flex-grow py-6">
@@ -309,56 +271,12 @@
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer id="about" class="bg-white border-t border-gray-100 pt-12 pb-6 mt-12">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 pb-8 border-b border-gray-100">
-                
-                <!-- Logo & Tagline -->
-                <div class="space-y-2">
-                    <a href="https://tuyendung.shinevisioncenter.com" class="flex items-center gap-2">
-                        <img src="../../assets/logoshine.png" alt="ShineVision Logo" class="h-8 w-auto object-contain" onerror="this.onerror=null; this.src='https://placehold.co/150x40/0d5c3a/ffffff?text=ShineVision';">
-                    </a>
-                    <p class="text-xs text-gray-500 italic">
-                        Với mắt sáng, vì những hành trình trọn vẹn hơn.
-                    </p>
-                </div>
+    <!-- NƠI CHỨA FOOTER GỌI TỪ SCRIPT CHUNG -->
+    <div id="shared-footer-container"></div>
 
-                <!-- Nav Links -->
-                <nav class="flex flex-wrap gap-6 sm:gap-8 text-sm text-gray-600 font-medium">
-                    <a href="https://shinevisioncenter.com" target="_blank" class="hover:text-brand-600 transition-colors">Về chúng tôi</a>
-                    <a href="index.html#jobs" class="hover:text-brand-600 transition-colors">Vị trí tuyển dụng</a>
-                    <a href="index.html#culture" class="hover:text-brand-600 transition-colors">Văn hóa</a>
-                    <a href="#" class="hover:text-brand-600 transition-colors">Liên hệ</a>
-                </nav>
-
-                <!-- Social Icons -->
-                <div class="flex items-center gap-3 text-gray-700">
-                    <a href="https://www.facebook.com/makeyoureyesShine" target="_blank" class="w-9 h-9 rounded-full bg-gray-50 hover:bg-brand-100 hover:text-brand-600 flex items-center justify-center transition-all" title="Facebook">
-                        <i class="fa-brands fa-facebook-f text-sm"></i>
-                    </a>
-                    <a href="https://www.youtube.com/@Kh%C3%B4iph%E1%BB%A5cth%E1%BB%8Bl%E1%BB%B1cShine" target="_blank" class="w-9 h-9 rounded-full bg-gray-50 hover:bg-brand-100 hover:text-brand-600 flex items-center justify-center transition-all" title="YouTube">
-                        <i class="fa-brands fa-youtube text-sm"></i>
-                    </a>
-                    <a href="https://www.tiktok.com/@khoiphucthilucshine" target="_blank" class="w-9 h-9 rounded-full bg-gray-50 hover:bg-brand-100 hover:text-brand-600 flex items-center justify-center transition-all" title="TikTok">
-                        <i class="fa-brands fa-tiktok text-sm"></i>
-                    </a>
-                </div>
-
-            </div>
-
-            <!-- Bottom Copyright Line -->
-            <div class="pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-500 gap-4">
-                <p>© 2024 ShineVision. All rights reserved.</p>
-                <div class="flex gap-6">
-                    <a href="#" class="hover:underline">Chính sách bảo mật</a>
-                    <a href="#" class="hover:underline">Điều khoản sử dụng</a>
-                </div>
-            </div>
-
-        </div>
-    </footer>
+    <!-- Nhúng file script Header và Footer chung từ thư mục cha -->
+    <script src="../header.js"></script>
+    <script src="../footer.js"></script>
 
     <!-- Scripts -->
     <script>
