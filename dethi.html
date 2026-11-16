@@ -274,6 +274,42 @@
   </section>
 
   <!-- ===================================================================== -->
+  <!-- OVERLAY HIỂN THỊ THỜI GIAN CÒN LẠI (KHI ẤN PHÍM TẮT BỊ KHOÁ)          -->
+  <!-- ===================================================================== -->
+  <div id="time-overlay" class="hidden fixed inset-0 z-50 bg-slate-900/75 flex items-center justify-center p-4" role="dialog" aria-modal="true">
+    <div class="relative w-full max-w-sm bg-white border-2 border-slate-200 rounded-xl p-6 sm:p-8 text-center">
+      <!-- Nút X góc trên phải để tắt overlay -->
+      <button
+        type="button"
+        id="btn-close-overlay"
+        aria-label="Đóng"
+        class="absolute top-3.5 right-3.5 w-8 h-8 rounded-lg border border-slate-300 bg-slate-50 hover:bg-slate-100 text-slate-700 flex items-center justify-center cursor-pointer transition-colors"
+      >
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 6 6 18"/>
+          <path d="m6 6 12 12"/>
+        </svg>
+      </button>
+
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-brand-light border border-brand-border text-brand text-xs font-semibold uppercase tracking-wider mb-3">
+        Shine Vision Center
+      </div>
+
+      <p class="text-sm font-semibold text-slate-600 mb-2">
+        Thời gian làm bài còn lại
+      </p>
+
+      <div id="overlay-timer-display" class="text-4xl sm:text-5xl font-bold text-brand tabular-nums tracking-tight my-3">
+        30:00
+      </div>
+
+      <p class="text-xs text-slate-500 mt-4">
+        Nhấn nút <strong>X</strong> hoặc phím <strong>Esc</strong> để tiếp tục làm bài.
+      </p>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
   <!-- LOGIC CHƯƠNG TRÌNH & DỮ LIỆU 100 CÂU HỎI                              -->
   <!-- ===================================================================== -->
   <script>
@@ -289,10 +325,10 @@
       { id: 2, q: "Năm 2021 đánh dấu cột mốc nào?", options: { A: "Phát triển ShineVisionApp", B: "Đặt mục tiêu 50.000 khách", C: "Ra mắt chương trình đào tạo thị giác online", D: "Đổi tên thành Khôi phục thị lực Shine" }, ans: "C" },
       { id: 3, q: "Tầm nhìn đến năm 2030 của Shine là gì?", options: { A: "Mở 50 chi nhánh trong một năm", B: "Chỉ phát triển kính thuốc", C: "Ngừng đào tạo trực tuyến", D: "Trở thành đơn vị đào tạo thị giác số 1 Việt Nam và hỗ trợ hơn 50.000 khách" }, ans: "D" },
       { id: 4, q: "Giá trị cốt lõi nào được nêu trong giáo án?", options: { A: "Tác phong nhanh nhẹn và làm việc có tâm", B: "Tư vấn càng nhanh càng tốt dù thiếu thông tin", C: "Cam kết khỏi mọi bệnh mắt", D: "Ưu tiên bán hàng hơn đánh giá" }, ans: "A" },
-      { id: 5, q: "Năm nào ShineVisionApp được ghi nhận trong lịch sử phát triển?", options: { A: "2021", B: "2026", C: "2014", D: "2017" }, ans: "B" },
+      { id: 5, q: "Năm nào Phần mềm ShineVisionApp được Ra đời?", options: { A: "2021", B: "2026", C: "2014", D: "2017" }, ans: "B" },
       { id: 6, q: "Khi giới thiệu tuyên bố “đầu tiên/duy nhất”, HLV nên làm gì?", options: { A: "Dùng để thay thế thông tin chuyên môn", B: "Nói mọi nơi khác đều không hiệu quả", C: "Chỉ sử dụng như tuyên bố đã được kiểm chứng", D: "Khẳng định tuyệt đối dù chưa có chứng cứ" }, ans: "C" },
       { id: 7, q: "Số liệu 11% lác hiện và 36% lác ẩn trong slide liên quan nghiên cứu tại đâu?", options: { A: "Hà Nội, Việt Nam", B: "Tokyo, Nhật Bản", C: "London, Anh", D: "Ningbo, Trung Quốc" }, ans: "D" },
-      { id: 8, q: "Cách sử dụng đúng số liệu dịch tễ trong giáo án là gì?", options: { A: "Kiểm tra bài gốc và không suy rộng sang Việt Nam", B: "Coi là tỷ lệ toàn quốc Việt Nam", C: "Coi là tỷ lệ mọi độ tuổi trên thế giới", D: "Dùng để chẩn đoán cá nhân" }, ans: "A" },
+      { id: 8, q: "Phong thái cần phải thể hiện trong buổi tư vấn là gì?", options: { A: "Nhiệt tình, giữ vị thế của 1 chuyên gia", B: "Thoải mái cười đùa, pha trò cười cho khách", C: "Lạnh lùng, ít nói", D: "Lấy lòng khách để tăng hiệu quả chốt sale" }, ans: "A" },
       { id: 9, q: "Mục tiêu quan trọng nhất của Level 1 trong chuyên môn là gì?", options: { A: "Chốt hợp đồng ngay khi nhận tin nhắn", B: "Nhận diện vấn đề và biết đặt câu hỏi", C: "Chẩn đoán mọi bệnh mắt qua chat", D: "Thành thạo các bài tập dành cho lác, nhược" }, ans: "B" },
       { id: 10, q: "Tác phong tư vấn đúng theo giáo án là gì?", options: { A: "Để khách tự quyết toàn bộ trình tự", B: "Chỉ đọc slide không tương tác", C: "Thân thiện, nghiêm túc và biết dẫn dắt", D: "Cợt nhả để tạo không khí" }, ans: "C" },
       { id: 11, q: "Thị lực mô tả chủ yếu điều gì?", options: { A: "Độ lệch mắt tính bằng lăng kính", B: "Khả năng tiết nước mắt", C: "Màu sắc của mống mắt", D: "Khả năng nhìn rõ và phân giải chi tiết" }, ans: "D" },
@@ -307,7 +343,7 @@
       { id: 20, q: "Khách đeo kính đúng mà vẫn khó chịu, kết luận phù hợp là gì?", options: { A: "Cần xem xét thêm chức năng thị giác hai mắt và yếu tố khác", B: "Chắc chắn không có vấn đề mắt", C: "Chắc chắn bị nhược thị", D: "Phải bỏ kính ngay" }, ans: "A" },
       { id: 21, q: "Theo phần giải thích rộng trong giáo án, nhược thị liên quan điều gì?", options: { A: "Dây thần kinh bị tổn thương do viêm", B: "Phát triển thị giác không đạt kỳ vọng trong giai đoạn phát triển", C: "Chỉ là mỏi mắt do dùng máy tính", D: "Luôn là lác ngoài" }, ans: "B" },
       { id: 22, q: "Ngưỡng 8/10 trong nhược thị cần hiểu thế nào?", options: { A: "Là số đo góc lác", B: "Là mức thị lực không cần chỉnh kính", C: "Là mức thị lực để đánh giá có nhược hay không sau khi chỉnh kính", D: "Là tiêu chuẩn duy nhất cho mọi lứa tuổi" }, ans: "C" },
-      { id: 23, q: "Yếu tố nào có thể gây nhược thị?", options: { A: "Cận lệch 1.25Dp", B: "Chiều cao", C: "Lác luân phiên", D: "Bất đồng khúc xạ lớn giữa hai mắt" }, ans: "D" },
+      { id: 23, q: "Yếu tố nào có tỷ lệ cao gây nhược thị?", options: { A: "Cận lệch 1.25Dp", B: "Chiều cao", C: "Lác luân phiên", D: "Bất đồng khúc xạ lớn giữa hai mắt" }, ans: "D" },
       { id: 24, q: "Sụp mi gây nguy cơ nhược thị chủ yếu khi nào?", options: { A: "Khi che lấp trục nhìn trong giai đoạn phát triển", B: "Khi chỉ gây khác biệt thẩm mỹ nhẹ", C: "Khi người bệnh thường xuyên làm việc buổi tối", D: "Khi không ngủ đủ tám giờ" }, ans: "A" },
       { id: 25, q: "Thông tin nào nên yêu cầu đầu tiên khi khách nói bác sĩ chẩn đoán nhược thị?", options: { A: "Gửi video hướng dân Brockstring", B: "Phiếu khám gần nhất", C: "Ảnh Hirschberg", D: "Thông tin ngân hàng" }, ans: "B" },
       { id: 26, q: "Ngoài độ kính, HLV cần hỏi gì ở khách nhược thị?", options: { A: "Ảnh Hirschberg", B: "Cover Test", C: "Có lác, đã bịt mắt/tập gì và tiến triển ra sao", D: "Chỉ hỏi nghề nghiệp" }, ans: "C" },
@@ -436,6 +472,82 @@
     const btnNextLabel = document.getElementById("btn-next-label");
     const btnRestart = document.getElementById("btn-restart");
 
+    // Các phần tử Overlay thời gian còn lại
+    const timeOverlay = document.getElementById("time-overlay");
+    const overlayTimerDisplay = document.getElementById("overlay-timer-display");
+    const btnCloseOverlay = document.getElementById("btn-close-overlay");
+
+    function openTimeOverlay() {
+      overlayTimerDisplay.textContent = formatMMSS(state.remainingSeconds);
+      if (state.remainingSeconds <= 180) {
+        overlayTimerDisplay.className = "text-4xl sm:text-5xl font-bold text-red-600 tabular-nums tracking-tight my-3";
+      } else {
+        overlayTimerDisplay.className = "text-4xl sm:text-5xl font-bold text-brand tabular-nums tracking-tight my-3";
+      }
+      timeOverlay.classList.remove("hidden");
+    }
+
+    function closeTimeOverlay() {
+      timeOverlay.classList.add("hidden");
+    }
+
+    btnCloseOverlay.addEventListener("click", closeTimeOverlay);
+
+    // =========================================================================
+    // KHOÁ PHÍM TẮT CONSOLE / DEVTOOLS & LƯU / TẢI TRANG (WINDOWS & MACOS)
+    // =========================================================================
+    document.addEventListener("contextmenu", function (e) {
+      e.preventDefault();
+      openTimeOverlay();
+    });
+
+    document.addEventListener("keydown", function (e) {
+      // Nếu đang mở overlay và nhấn Escape -> Tắt overlay
+      if (e.key === "Escape" && !timeOverlay.classList.contains("hidden")) {
+        e.preventDefault();
+        closeTimeOverlay();
+        return;
+      }
+
+      const key = e.key ? e.key.toLowerCase() : "";
+      const code = e.code || "";
+      const isCtrlOrCmd = e.ctrlKey || e.metaKey;
+
+      // 1. Phím F12 hoặc F5
+      const isF12 = e.key === "F12" || code === "F12" || e.keyCode === 123;
+      const isF5 = e.key === "F5" || code === "F5" || e.keyCode === 116;
+
+      // 2. Mở Console / DevTools trên Windows (Ctrl + Shift + I/J/C/K) & macOS (Cmd + Option + I/J/C/K/U)
+      const isDevToolsWin = e.ctrlKey && e.shiftKey && ["i", "j", "c", "k"].includes(key);
+      const isDevToolsMac = e.metaKey && e.altKey && ["i", "j", "c", "k", "u"].includes(key);
+      const isDevToolsMacShift = e.metaKey && e.shiftKey && ["i", "j", "c", "k"].includes(key);
+
+      // 3. Xem mã nguồn (Ctrl + U / Cmd + U)
+      const isViewSource = isCtrlOrCmd && key === "u";
+
+      // 4. Lưu trang / Tải trang / In trang (Ctrl/Cmd + S, Ctrl/Cmd + P, Ctrl/Cmd + R, Ctrl/Cmd + Shift + R)
+      const isSavePage = isCtrlOrCmd && key === "s";
+      const isPrintPage = isCtrlOrCmd && key === "p";
+      const isReloadPage = isCtrlOrCmd && key === "r";
+
+      if (
+        isF12 ||
+        isF5 ||
+        isDevToolsWin ||
+        isDevToolsMac ||
+        isDevToolsMacShift ||
+        isViewSource ||
+        isSavePage ||
+        isPrintPage ||
+        isReloadPage
+      ) {
+        e.preventDefault();
+        e.stopPropagation();
+        openTimeOverlay();
+        return false;
+      }
+    }, true);
+
     // Định dạng thời gian MM:SS
     function formatMMSS(totalSec) {
       const mins = Math.floor(totalSec / 60);
@@ -513,6 +625,7 @@
       displayHlvName.textContent = fullName;
       displayHlvPhone.textContent = phone;
       timerDisplay.textContent = formatMMSS(state.remainingSeconds);
+      overlayTimerDisplay.textContent = formatMMSS(state.remainingSeconds);
       timerBox.className = "px-2.5 py-1 bg-brand-light border border-brand-border rounded-md text-brand flex items-center gap-1.5 font-semibold tabular-nums";
 
       showScreen(screenQuiz);
@@ -530,16 +643,21 @@
         if (state.remainingSeconds <= 0) {
           state.remainingSeconds = 0;
           timerDisplay.textContent = "00:00";
+          overlayTimerDisplay.textContent = "00:00";
           clearInterval(state.timerInterval);
+          closeTimeOverlay();
           finishExam(true); // Hết giờ -> dừng thi ngay lập tức và gửi kết quả
           return;
         }
 
-        timerDisplay.textContent = formatMMSS(state.remainingSeconds);
+        const formattedTime = formatMMSS(state.remainingSeconds);
+        timerDisplay.textContent = formattedTime;
+        overlayTimerDisplay.textContent = formattedTime;
 
         // Cảnh báo màu đỏ khi còn dưới 3 phút
         if (state.remainingSeconds <= 180) {
           timerBox.className = "px-2.5 py-1 bg-red-50 border border-red-300 rounded-md text-red-700 flex items-center gap-1.5 font-bold tabular-nums";
+          overlayTimerDisplay.className = "text-4xl sm:text-5xl font-bold text-red-600 tabular-nums tracking-tight my-3";
         }
       }, 1000);
     }
@@ -598,7 +716,6 @@
       });
 
       // Cập nhật nhãn nút Tiếp / Nộp bài
-      const isLastRemaining = unansweredCount === 0 || (unansweredCount === 1 && !selectedOption);
       if (unansweredCount === 0) {
         btnNextLabel.textContent = "Nộp bài";
         hintText.textContent = "Bạn đã hoàn thành tất cả 100 câu. Nhấn Nộp bài để xem kết quả.";
@@ -777,6 +894,7 @@
     // Nút Làm lại -> Quay về trang nhập thông tin ban đầu
     btnRestart.addEventListener("click", function () {
       if (state.timerInterval) clearInterval(state.timerInterval);
+      closeTimeOverlay();
       state.isSubmitted = false;
       state.shuffledQuestions = [];
       state.userAnswers = {};
